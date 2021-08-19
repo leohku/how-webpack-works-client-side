@@ -17,3 +17,7 @@ After the code in the array finishes running, it returns control back to `__webp
 On line 100, it then executes the `default` function (with Closure of the array's environment), and with `this` set to `undefined` (in strict mode).
 
 This is how Webpack executes bundled code client-side.
+
+---
+
+Note: The reason why Webpack prefixes all its internal functions with `__` is because as they are in the same Closure as bundled code, bundled code can actually reference Webpack internal variables. The `__` provides obscurity, preventing accidental access from user-supplied code.
